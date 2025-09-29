@@ -19,7 +19,6 @@
 *.tar.gz
 *.rar
 
-*/.mvn/*
-*/.vscode/*
-*/target/*
-
+*/.mvn
+*/.vscode
+*/target

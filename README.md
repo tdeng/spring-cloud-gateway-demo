@@ -1,7 +1,7 @@
 # Guidance
 
 ## Build & Deploy
-Before run `./script.sh`, please target Java 21 by `export JAVA_HOME=` properly
+Before run `./script.sh`, please target Java 21 with `export JAVA_HOME=` properly
 
 ## Test Setup
 1. Install JVisualVM
