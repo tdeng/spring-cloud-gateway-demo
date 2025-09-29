@@ -17,7 +17,7 @@ for dir in "${SUBDIRS[@]}"; do
   # Run your command
   eval "$COMMAND"
 
-  echo "<<< Leaving $dir"
+  echo "<<< Leaving $dir" 
   popd > /dev/null
 done
 
