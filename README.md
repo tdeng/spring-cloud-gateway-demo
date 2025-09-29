@@ -4,10 +4,9 @@
 Before run `./script.sh`, please target Java 21 with `export JAVA_HOME=` properly
 
 ## Test Setup
-1. Install JVisualVM
-2. Install Buffer Pool plugin
-3. Create ssh tunnel `cf ssh -N -T -L 5000:localhost:5000 gateway`
-4. Add a JMX connect with "localhost:5000"
+1. Create ssh tunnel `cf ssh -N -T -L 5000:localhost:5000 gateway`
+2. Start jconsole(JDK tool), connct to localhost:5000
+3. Monitor "MBeans > java.nio > BufferPool > direct > Attributes > MemoryUsed"
 
 ## Test
 Send masssive HTTP requests to below endpoints parallelly and monitor direct buffer usage on JVisualVM
