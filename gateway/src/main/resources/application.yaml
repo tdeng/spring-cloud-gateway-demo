@@ -1,0 +1,69 @@
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: user-service_25KB
+          uri: http://user-service.apps.internal:8080/users_25KB          
+          predicates:
+            - Path=/users_25KB/**
+
+        - id: user-service_25MB
+          uri: http://user-service.apps.internal:8080/users_25MB
+          predicates:
+            - Path=/users_25MB/**            
+
+        - id: byte-service_25KB
+          uri: http://byte-service.apps.internal:8080/bytes_25KB
+          predicates:
+            - Path=/bytes_25KB/**
+
+        - id: byte-service_25MB
+          uri: http://byte-service.apps.internal:8080/bytes_25MB
+          predicates:
+            - Path=/bytes_25MB/**            
+      default-filters:
+        - AddResponseHeader=X-Gateway, SpringCloudGateway
+
+management:
+  endpoint:
+    heapdump: 
+      enabled=true
+    prometheus:
+      enabled=true
+    gateway:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include:
+        - health
+        - info
+        - metrics
+        - prometheus
+        - heapdump
+        - threaddump
+        - gateway
+    jmx:
+      exposure:
+        include:
+        - health
+        - info
+        - metrics
+        - prometheus
+        - heapdump
+        - threaddump
+
+  metrics:
+    tags:
+      application: gateway-service
+
+reactor:
+  netty:
+    metrics: true
+
+logging:
+  level:
+    io.netty.buffer: DEBUG

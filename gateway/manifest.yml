@@ -1,0 +1,12 @@
+---
+applications:
+- name: gateway
+  memory: 1GB
+  instances: 1
+  buildpacks: [java_buildpack_offline]
+  path: target/gateway-service-0.0.1-SNAPSHOT.jar
+  env:
+    JBP_CONFIG_JMX: '{enabled: true}'
+    JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 21.+ }}'
+    # Default MaxDirectMemorySize is 10MB, automatically configured by Java buildpack
+    # JAVA_OPTS: "-XX:MaxDirectMemorySize=20M"
